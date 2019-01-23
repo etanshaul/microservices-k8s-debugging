@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservices-kubernetes-demo-catalog
+spec:
+  selector:
+    matchLabels:
+      app: microservices-kubernetes-demo-catalog
+  replicas: 1
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: microservices-kubernetes-demo-catalog
+        tier: frontend
+    spec:
+      containers:
+        - name: microservices-kubernetes-demo-cataloggg
+          image: gcr.io/eshaul-work/microservices-kubernetes-demo-catalog
+          ports:
+            - containerPort: 8081
+              name: http-server
+#            - containerPort: 5005
+#              name: debug

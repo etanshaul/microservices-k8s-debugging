@@ -1,0 +1,20 @@
+apiVersion: skaffold/v1beta1
+kind: Config
+build:
+  artifacts:
+#    - image: gcr.io/eshaul-work/microservices-kubernetes-demo-order
+#      context: ./microservice-kubernetes-demo-order
+    - image: gcr.io/eshaul-work/microservices-kubernetes-demo-customer
+      context: ./microservice-kubernetes-demo-customer
+    - image: gcr.io/eshaul-work/microservices-kubernetes-demo-catalog
+      context: ./microservice-kubernetes-demo-catalog
+#    - image: gcr.io/eshaul-work/microservices-kubernetes-demo-apache
+#      context: ./apache
+  local: {}
+deploy:
+  kubectl:
+    manifests:
+#      - ./microservice-kubernetes-demo-order/k8s/*
+      - ./microservice-kubernetes-demo-customer/k8s/*
+      - ./microservice-kubernetes-demo-catalog/k8s/*
+#      - ./apache/k8s/*
