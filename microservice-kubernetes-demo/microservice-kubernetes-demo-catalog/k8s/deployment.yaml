@@ -14,10 +14,13 @@ spec:
         tier: frontend
     spec:
       containers:
-        - name: microservices-kubernetes-demo-cataloggg
+        - name: microservices-kubernetes-demo-catalog
           image: gcr.io/eshaul-work/microservices-kubernetes-demo-catalog
           ports:
             - containerPort: 8081
               name: http-server
-#            - containerPort: 5005
-#              name: debug
+            - containerPort: 5005
+              name: debug
+          env:
+            - name: JAVA_TOOL_OPTIONS
+              value: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005,quiet=y"
